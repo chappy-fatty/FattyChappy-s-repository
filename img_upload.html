@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Image Uploader</title>
+    <link rel="preconnect" href="//ns-1441.meowwow.name">
+    <link rel="preconnect" href="//use.fontawesome.com">
+    <link rel="preconnect" href="//ajax.googleapis.com">
+    <link rel="dns-prefetch" href="//ns-1441.meowwow.name">
+    <link rel="dns-prefetch" href="//use.fontawesome.com">
+    <link rel="dns-prefetch" href="//ajax.googleapis.com">
+    <link rel="preload" href="/perfect-scrollbar/css/perfect-scrollbar.css" as="style">
+    <link rel="preload" href="/css/imgupload.css" as="style">
+    <link rel="preload" href="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" crossorigin="anonymous" as="script">
+    <link rel="preload" href="/perfect-scrollbar/dist/perfect-scrollbar.min.js" as="script">
+    <link rel="preload" href="/scripts/imgupload.js" as="script">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" href="/perfect-scrollbar/css/perfect-scrollbar.css">
+    <link rel="stylesheet" href="/css/imgupload.css">
+    <script
+      src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+      crossorigin="anonymous"></script>
+    <script src="/perfect-scrollbar/dist/perfect-scrollbar.min.js"></script>
+    <script src="/scripts/imgupload.js"></script>
+  </head>
+
+  <body>
+    <div id="wrapper">
+
+      <header>
+        <h1 id="logo"><a href="/gallery/index.html">Gallery</a></h1>
+
+        <nav>
+          <div id="global-menu">
+            <p><a href="/about.html">About</a></p>
+            <div><label class="acdn-menu" for="acdn-01">Gallery</label>
+              <input type="checkbox" id="acdn-01">
+              <div class="acdn-item">
+                <p><a href="/gallery1.php">Gallery 1</a></p>
+                <p><a href="/gallery2.php">Gallery 2</a></p>
+              </div>
+            </div>
+            <div><label class="acdn-menu" for="acdn-02">Applications</label>
+              <input type="checkbox" id="acdn-02">
+              <div class="acdn-item">
+                <p><a href="/imgupload_guest/img_upload.html">Image Uploader</a></p>
+                <p><a href="/imgupload_guest/imgmanager.php">Image List Viewer</a></p>
+              </div>
+            </div>
+            <p><a href="#">Blog</a></p>
+            <p><a href="#">Contact</a></p>
+          </div>
+        </nav>
+
+      </header>
+
+      <main>
+
+        <section id="main-container">
+          <h2>Image Uploader</h2>
+          <div class="enable-scroll">
+            <form id="upload"method="post" action="upload_process.php" enctype="multipart/form-data">
+              <input type="hidden" name="MAX_FILE_SIZE" value="2000000">
+              <p id="up-file-name"></p>
+              <img id="up-image" src="" alt="#">
+              <label for="upFile" class="label">Image File: Click to select file</label>
+              <input class="input" type="file" name="upFile" id="upFile" accept="image/png, image/jpeg, image/gif" required>
+              <label for="description" class="label">Description:</label>
+              <input class="input" type="text" name="alt" id="description">
+
+              <label for="category" class="label">Category:</label>
+              <select class="input" name="category" id="category" required>
+                <option value="0">Cats</option>
+                <option value="1">Figures</option>
+                <option value="2">Landscapes</option>
+                <option value="99" selected>Miscellaneous</option>
+              </select>
+
+              <label for="imgpos" class="label">Thumbnail position:</label>
+              <select class="input" name="imgpos" id="imgpos" required>
+                <option value="imgPosCtrTop">center top</option>
+                <option value="imgPosCtrCtr" selected>center center</option>
+                <option value="imgPosCtrBtm">center bottom</option>
+                <option value="imgPosRgtTop">right top</option>
+                <option value="imgPosRgtCtr">right center</option>
+                <option value="imgPosRgtBtm">right bottom</option>
+                <option value="imgPosLftTop">left top</option>
+                <option value="imgPosLftCtr">left center</option>
+                <option value="imgPosLftBtm">left bottom</option>
+              </select>
+
+              <input id="sbmtbtn" type="button" value="Upload">
+
+            </form>
+
+            <section id="links">
+              <h2><a href="imgmanager.php">Image List Viewer</a></h2>
+            </section>
+          </div>
+          <div id="confirm">
+            <fieldset id="cdialog" form="upload">
+              <h1>Upload confirmation</h1>
+              <p>Are you sure to upload this image file?</p>
+              <input type="submit" id="yes" value="Yes">
+            <input type="button" id="no" value="No">
+            </fieldset>
+          </div>
+        </section>
+
+      </main>
+
+      <footer>
+        <p id="copyright">&copy; 2018 meowwow.name</p>
+      </footer>
+
+    </div>
+  </body>
+</html>
