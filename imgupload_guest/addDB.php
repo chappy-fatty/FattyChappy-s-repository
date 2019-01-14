@@ -1,7 +1,7 @@
 <?php
 function addImageDB($file, $alt, $categoryNo, $imgpos){
   try{
-    require_once(__DIR__ . '/DBinfo.php');
+    require_once('DBinfo.php');
     $pdo = new PDO(DBinfo::DSN, DBinfo::USER, DBinfo::PASSWORD);
     $pdo -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $pdo -> setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
@@ -17,10 +17,10 @@ function addImageDB($file, $alt, $categoryNo, $imgpos){
   }
 
   catch(PDOException $e){
-    header('Content-Type: text/html; charset=UTF-8', true, 500);
+    header('Content-Type: text/html; charset=UTF-8');
     $message = $e -> getMessage();
     echo "$message<br>";
-    echo "<a href='javascript:history.back()'>Back</a>";
+    echo "<a href='img_upload.html'>Back</a>";
     exit;
   }
 }
