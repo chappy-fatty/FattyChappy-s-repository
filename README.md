@@ -3,13 +3,14 @@ For my portfolio
 
 This is source codes of my image managing applications.
 
+-- Files description --
+
 -- Image Uploader --
 https://ns-1441.meowwow.name/en/imgupload_guest/img_upload.html
 
 -- Image List Viewer --
 https://ns-1441.meowwow.name/en/imgupload_guest/imgmanager.php
 
--- Files description --
 addDB.php         -> add datas submitted by img_upload.html to the images list database (called by upload_process.php as addImageDB function)
 
 DBinfo.php        -> its name tells (database connection infomation not included)
@@ -35,3 +36,12 @@ imgmanager2.js -> lightbox function, delete from database and relevant image, co
 language.js -> rewrite the website data when language option drop down menu is changed
 
 tooltip.js -> popping an image to show the purpose of the item (for thumbnails' object-position property) 
+
+-- Contact form --
+https://ns-1441.meowwow.name/en/contact.html
+
+contact.html -> A mail form made with html
+
+contact.js -> show confirm dialog and verify submitting contents
+
+form_process.php -> verify submitted contents further then send an email to website administrator
