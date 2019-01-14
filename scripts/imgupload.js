@@ -7,23 +7,34 @@ $(function(){
     minScrollbarLength: 20
   });
 
+  const upUrl = [
+    'https://ns-1441.meowwow.name/server/img_upload.html',
+    'https://ns-1441.meowwow.name/en/imgupload_guest/img_upload.html',
+    'https://ns-1441.meowwow.name/ja/imgupload_guest/img_upload.html'
+  ]
+
+  const modUrl = [
+    'https://ns-1441.meowwow.name/server/imginfo.php',
+    'https://ns-1441.meowwow.name/en/imgupload_guest/imginfo.php',
+    'https://ns-1441.meowwow.name/ja/imgupload_guest/imginfo.php'
+  ]
+
   let url = window.location.href;
   let act = '';
   $('#confirm').hide();
 
 // URL check to toggle showing #up-file-name, #up-image
-  if(url === 'https://ns-1441.meowwow.name/server/img_upload.html' || url === 'https://ns-1441.meowwow.name/imgupload_guest/img_upload.html'){
-    $('#up-file-name, #up-image').hide();
-    act = $('#upload');
-  }
-  else if(url.indexOf('https://ns-1441.meowwow.name/server/imginfo.php') !== -1 || url.indexOf('https://ns-1441.meowwow.name/imgupload_guest/imginfo.php') !== -1){
-    $('#up-file-name, #up-image').show();
-    act = $('#modify');
-  }
-  else {
-    let p = $('<p>');
-    p.text('Meow...? Why did you call me?');
-    $('#main-container').append(p);
+  for (let i = 0; i < upUrl.length; i++){
+    if(url.indexOf(upUrl[i]) !== -1){
+      $('#up-file-name, #up-image').hide();
+      act = $('#upload');
+      break;
+    }
+    else if(url.indexOf(modUrl[i]) !== -1){
+      $('#up-file-name, #up-image').show();
+      act = $('#modify');
+      break;
+    }
   }
 
 // show selected image preview thumbnail and file name when a user has selected an image file
