@@ -3,7 +3,7 @@
   $imgpos = '';
   try{
     //get DB infomation then login DB
-    require_once('/var/www/html/server/DBinfo.php');
+    require_once('DBinfo.php');
     $pdo = new PDO(DBinfo::DSN,DBinfo::USER,DBinfo::PASSWORD);
     $pdo -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
