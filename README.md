@@ -1,5 +1,5 @@
 # FattyChappy-s-repository
-Just for testing purpose
+For my portfolio
 
 This is source codes of my image managing applications.
 
@@ -9,8 +9,7 @@ https://ns-1441.meowwow.name/en/imgupload_guest/img_upload.html
 -- Image List Viewer --
 https://ns-1441.meowwow.name/en/imgupload_guest/imgmanager.php
 
-Notice: These URLs are not available since I have not finished my contents yet...
-
+-- Files description --
 addDB.php         -> add datas submitted by img_upload.html to the images list database (called by upload_process.php as addImageDB function)
 
 DBinfo.php        -> its name tells (database connection infomation not included)
@@ -29,3 +28,10 @@ modifyDB.php      -> modify database fields called by info_process.php as modDB 
 
 upload_process.php -> uploading process - verify and upload an image submitted by img_upload.html then call functions in addDB.php and img_resize.php
 
+imgupload.js -> show confirm dialog or uploading image
+
+imgmanager2.js -> lightbox function, delete from database and relevant image, control lazy-load
+
+language.js -> rewrite the website data when language option drop down menu is changed
+
+tooltip.js -> popping an image to show the purpose of the item (for thumbnails' object-position property) 
