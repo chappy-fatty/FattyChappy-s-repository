@@ -1,0 +1,628 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  font-size: calc(1vw + 1vh + .5vmin);
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+/* Common color settings */
+/* Common propaties by setting extend rules */
+h1, h2, #global-menu a, #global-menu .acdn-menu, footer p {
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5), 0 0 0.2em rgba(26, 43, 87, 0.8);
+}
+
+#sbmtbtn, #yes {
+  background: rgba(29, 59, 149, 0.5);
+  color: #E2EBEE;
+  font-size: 1em;
+  padding: 0 0.5em;
+  border: none;
+  box-shadow: 1px 1px 3px #0F0A33;
+  border-radius: 0.25em;
+  z-index: 6;
+  transition: all 0.5s;
+}
+
+input[type="reset"], #no, #cancel {
+  background: rgba(43, 29, 149, 0.5);
+  color: #E2EBEE;
+  font-size: 1em;
+  padding: 0 0.5em;
+  border: none;
+  box-shadow: 1px 1px 3px #0F0A33;
+  border-radius: 0.25em;
+  z-index: 6;
+  transition: all 0.5s;
+}
+
+#sbmtbtn:hover, #yes:hover {
+  background: rgba(29, 59, 149, 0.8);
+  color: #E2EBEE;
+  box-shadow: -1px -1px 3px #0F0A33;
+  cursor: pointer;
+}
+
+input[type="reset"]:hover, #no:hover, #cancel {
+  background: rgba(43, 29, 149, 0.8);
+  color: #E2EBEE;
+  box-shadow: -1px -1px 3px #0F0A33;
+  cursor: pointer;
+}
+
+/* Links in the bottom of main content */
+#links {
+  display: flex;
+  justify-content: center;
+  color: #E2EBEE;
+  font-size: 0.75rem;
+}
+
+#links a {
+  padding: 0 1em;
+}
+
+/* Universal Selector, html, body, a for general settings */
+body {
+  background: center/cover #0F0A33 url(css_img/site_bg_p.jpg) no-repeat;
+  font: 1rem/1.6 sans-serif;
+  color: #1A2B57;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+a {
+  text-decoration: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  transition: all 0.5s;
+}
+
+a:hover {
+  background: rgba(29, 59, 149, 0.8);
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+h2 {
+  font-size: 1.2rem;
+}
+
+/* for perfect scroll library */
+.enable-scroll {
+  overflow: hidden;
+  position: relative;
+}
+
+/* Tool tip function */
+.tooltip {
+  background: #E2EBEE;
+  color: rgba(26, 43, 87, 0.8);
+  padding: 0.5em;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 15em;
+  font-size: 0.5rem;
+  z-index: 100;
+}
+
+.tooltip img {
+  max-width: 14em;
+}
+
+/* Wrapper for entire contents */
+#wrapper {
+  width: 100vw;
+  margin: 0 auto;
+}
+
+/* Header and site title logo */
+header {
+  background: linear-gradient(rgba(26, 43, 87, 0), rgba(26, 43, 87, 0.8));
+}
+
+#logo {
+  text-align: center;
+}
+
+#logo a {
+  background: center/contain url(css_img/site_logo.svg) no-repeat;
+  -webkit-filter: drop-shadow(2px 2px 3px #0F0A33);
+          filter: drop-shadow(2px 2px 3px #0F0A33);
+  display: block;
+  color: #E2EBEE;
+  font-size: 1.2em;
+  width: 100vw;
+  height: 2.5rem;
+  text-indent: -9999px;
+}
+
+/* Global menu */
+#global-menu {
+  width: 100vw;
+  font-size: 1rem;
+  display: flex;
+  justify-content: space-around;
+  /*Global menu's child elements */
+  /* accordion menu settings */
+}
+
+#global-menu p, #global-menu label {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+#global-menu a, #global-menu .acdn-menu {
+  display: block;
+  color: #E2EBEE;
+  text-align: center;
+  width: 20vw;
+  transition: all 0.5s;
+}
+
+#global-menu a:hover, #global-menu .acdn-menu:hover {
+  background: rgba(29, 59, 149, 0.8);
+  cursor: pointer;
+}
+
+#global-menu input[id^="acdn"] {
+  display: none;
+}
+
+#global-menu .acdn-item {
+  position: absolute;
+  top: auto;
+  left: auto;
+  z-index: 9999;
+}
+
+#global-menu .acdn-item p {
+  background: #1A2B57;
+  border-left: 1px solid #1D3B6D;
+  border-right: 1px solid #1D3B6D;
+  border-bottom: 1px solid #1D3B6D;
+}
+
+#global-menu input[id^="acdn"] + .acdn-item {
+  display: none;
+  transition: all 0.5s;
+}
+
+#global-menu input[id^="acdn"]:checked + .acdn-item {
+  display: block;
+}
+
+/* End of global menu settings */
+/* Footer and copyright */
+footer {
+  background: linear-gradient(rgba(26, 43, 87, 0.8), rgba(26, 43, 87, 0));
+  display: flex;
+  justify-content: center;
+  padding: 0.1rem 1rem;
+}
+
+footer * {
+  margin: 0 0.5em;
+  font-size: 0.5rem !important;
+  text-align: center;
+  color: #E2EBEE;
+}
+
+footer select, footer option {
+  color: #1A2B57;
+  width: auto !important;
+  border-radius: 0;
+  height: 1.5em;
+  line-height: 1.5em;
+}
+
+/* Media Queries */
+/* For small screen devices */
+@media (max-width: 480px) and (orientation: portrait) {
+  body {
+    background: center/cover #0F0A33 url(css_img/smallimg/site_bg_p.jpg) no-repeat;
+  }
+}
+
+@media (max-width: 480px) and (orientation: landscape) {
+  body {
+    background: center/cover #0F0A33 url(css_img/smallimg/site_bg_l.jpg) no-repeat;
+  }
+}
+
+/* Average mobile devices for landscape screen */
+@media (min-width: 481px) and (max-width: 768px) and (orientation: landscape) {
+  body {
+    background: center/cover #0F0A33 url(css_img/site_bg_l.jpg) no-repeat;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 999px) and (orientation: landscape) {
+  body {
+    background: center/cover #0F0A33 url(css_img/site_bg_l.jpg) no-repeat;
+  }
+  header {
+    display: flex;
+    justify-content: flex-start;
+  }
+  #logo a {
+    background: center/contain url(css_img/site_logo.svg) no-repeat;
+    -webkit-filter: drop-shadow(2px 2px 3px #0F0A33);
+            filter: drop-shadow(2px 2px 3px #0F0A33);
+    width: 40vw;
+    height: 1.8rem;
+  }
+  #global-menu {
+    width: 60vw;
+  }
+  #global-menu a, #global-menu .acdn-menu {
+    width: 12vw;
+  }
+}
+
+/* Maybe for iPad Pro or small laptop PCs */
+@media (min-width: 1000px) and (orientation: portrait) {
+  body {
+    background: center/cover #0F0A33 url(css_img/largeimg/site_bg_p.jpg) no-repeat;
+  }
+  header {
+    display: flex;
+    justify-content: flex-start;
+  }
+  #logo a {
+    background: center/contain url(css_img/site_logo.svg) no-repeat;
+    -webkit-filter: drop-shadow(2px 2px 3px #0F0A33);
+            filter: drop-shadow(2px 2px 3px #0F0A33);
+    width: 40vw;
+    height: 1.6rem;
+  }
+  #global-menu {
+    width: 60vw;
+  }
+  #global-menu a, #global-menu .acdn-menu {
+    font-size: 0.8rem;
+    width: 12vw;
+  }
+  .tooltip {
+    width: 12em;
+    font-size: 0.5rem;
+    z-index: 100;
+  }
+  .tooltip img {
+    max-width: 11em;
+  }
+}
+
+/* For PC screen */
+@media (min-width: 1000px) and (orientation: landscape) {
+  body {
+    background: center/cover #0F0A33 url(css_img/largeimg/site_bg_l.jpg) no-repeat;
+  }
+  header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  #logo a {
+    background: center/contain url(css_img/site_logo.svg) no-repeat;
+    -webkit-filter: drop-shadow(2px 2px 3px #0F0A33);
+            filter: drop-shadow(2px 2px 3px #0F0A33);
+    width: 40vw;
+    height: 1.6rem;
+  }
+  #global-menu {
+    width: 60vw;
+  }
+  #global-menu a, #global-menu .acdn-menu {
+    font-size: 0.8rem;
+    width: 12vw;
+  }
+  .tooltip {
+    width: 12em;
+    font-size: 0.5rem;
+    z-index: 100;
+  }
+  .tooltip img {
+    max-width: 11em;
+  }
+}
+
+main {
+  background-color: rgba(26, 43, 87, 0.8);
+  width: 100vw;
+  height: 80vh;
+}
+
+/* Setting the form layout */
+#main-container {
+  width: 80vw;
+  height: 80vh;
+  color: #E2EBEE;
+  margin: 0 auto;
+}
+
+#main-container .enable-scroll {
+  height: calc(80vh - 1.7em);
+}
+
+/* The layout using flex box */
+#contact {
+  width: 80vw;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.label, .input, textarea {
+  font-size: 0.9rem;
+  display: block;
+  height: 2em;
+  line-height: 2em;
+  width: 80vw;
+  padding: 0 0.25em;
+  border-radius: 5px;
+  border: 1px solid rgba(26, 43, 87, 0.8);
+}
+
+.input, textarea {
+  color: #0F0A33;
+}
+
+input.input, textarea {
+  transition: border .5s;
+}
+
+input.input:hover, textarea:hover {
+  cursor: pointer;
+  border: 1px solid #659BFF;
+}
+
+#message {
+  height: 12em;
+  line-height: normal;
+  overflow: hidden scroll;
+}
+
+/* Set background color in form items */
+.label:nth-of-type(odd) {
+  background: rgba(43, 29, 149, 0.7);
+}
+
+.label:nth-of-type(even) {
+  background: rgba(29, 59, 149, 0.7);
+}
+
+.input:nth-of-type(odd) {
+  background: rgba(220, 217, 242, 0.7);
+}
+
+.input:nth-of-type(even), textarea {
+  background: rgba(217, 223, 242, 0.7);
+}
+
+.input:nth-of-type(odd):focus {
+  background: #dcd9f2;
+}
+
+.input:nth-of-type(even):focus, textarea:focus {
+  background: #d9dff2;
+}
+
+/* submit button */
+#sbmtbtn, #yes {
+  width: 80vw;
+  height: 2em;
+  line-height: 2em;
+  display: block;
+  margin-top: 0.5em;
+}
+
+/* reset button */
+input[type="reset"], #no, #cancel {
+  width: 80vw;
+  height: 2em;
+  line-height: 2em;
+  display: block;
+  margin-top: 0.5em;
+}
+
+#confirm {
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  top: 0;
+  left: 0;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+#confirm #cdialog {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80vw;
+  height: auto;
+  max-height: 90vh;
+  background: #1A2B57 !important;
+  border-style: none !important;
+  border-radius: 5px !important;
+  padding: 0.25em !important;
+}
+
+#confirm #cdialog h1, #confirm #cdialog p {
+  color: #E2EBEE;
+}
+
+#confirm #cdialog .conf-content {
+  height: calc(80vh - 1.5em);
+  overflow: hidden;
+  position: relative;
+  text-align: left;
+}
+
+#confirm #cdialog .conf-content .label {
+  color: #E2EBEE;
+}
+
+#confirm #cdialog .conf-content .input {
+  color: #0F0A33;
+}
+
+#confirm #cdialog .conf-content .name-label, #confirm #cdialog .conf-content .subject-label {
+  background: rgba(43, 29, 149, 0.7);
+}
+
+#confirm #cdialog .conf-content .email-label, #confirm #cdialog .conf-content .message-label {
+  background: rgba(29, 59, 149, 0.7);
+}
+
+#confirm #cdialog .conf-content #name-c, #confirm #cdialog .conf-content #subject-c {
+  background: #dcd9f2;
+}
+
+#confirm #cdialog .conf-content #email-c, #confirm #cdialog .conf-content #message-c {
+  background: #d9dff2;
+}
+
+#confirm #cdialog .conf-content #message-c {
+  height: auto;
+}
+
+#links h2, #links a {
+  color: #E2EBEE;
+  font-size: 0.8rem;
+}
+
+#links a::before {
+  content: "»";
+}
+
+/* Media query for larger screen */
+@media (min-width: 769px) {
+  #contact {
+    width: auto;
+    max-width: 100vw;
+    display: grid;
+    grid-template: "name-label name"
+ "email-label email"
+ "subject-label subject"
+ "message-label message-label"
+ "message message"
+ "submit submit"
+ "reset reset" 1fr / 25vw auto;
+    justify-content: center;
+    grid-auto-rows: minmax(2em, auto);
+  }
+  .label, .input {
+    width: auto;
+    max-width: 100vw;
+    font-size: 0.7rem;
+  }
+  /* Define each items positon in grid layout */
+  /* left pane */
+  label[for="name"] {
+    grid-area: name-label;
+  }
+  label[for="email"] {
+    grid-area: email-label;
+  }
+  label[for="subject"] {
+    grid-area: subject-label;
+  }
+  label[for="message"] {
+    grid-area: message-label;
+  }
+  /* Right pane */
+  #name {
+    grid-area: name;
+  }
+  #email {
+    grid-area: email;
+  }
+  #subject {
+    grid-area: subject;
+  }
+  #message {
+    grid-area: message;
+  }
+  /* buttons */
+  #sbmtbtn {
+    grid-area: submit;
+  }
+  input[type="reset"] {
+    grid-area: reset;
+  }
+  .conf-content {
+    width: auto;
+    max-width: 80vw;
+    display: grid;
+    grid-template: "name-label name"
+ "email-label email"
+ "subject-label subject"
+ "message-label message-label"
+ "message message"
+ "submit submit"
+ "reset reset" 1fr / 10rem auto;
+    justify-content: center;
+    grid-auto-rows: minmax(2rem, auto);
+  }
+  /* Define each items positon in grid layout */
+  /* left pane */
+  .name-label {
+    grid-area: name-label;
+  }
+  .email-label {
+    grid-area: email-label;
+  }
+  .subject-label {
+    grid-area: subject-label;
+  }
+  .message-label {
+    grid-area: message-label;
+  }
+  /* Right pane */
+  #name-c {
+    grid-area: name;
+  }
+  #email-c {
+    grid-area: email;
+  }
+  #subject-c {
+    grid-area: subject;
+  }
+  #message-c {
+    grid-area: message;
+  }
+  /* buttons */
+  #yes {
+    grid-area: submit;
+  }
+  #no {
+    grid-area: reset;
+  }
+  #sbmtbtn, input[type="button"], input[type="reset"], #yes, #no {
+    font-size: 0.7rem;
+  }
+}
