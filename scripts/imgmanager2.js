@@ -9,8 +9,8 @@ $(function(){
 
   const galleryMain = $('#gallery-main');
   const showImg = $('#show-img');
-  const sImgPath = 'uploaded/';
-  const mImgPath = 'thumbs/';
+  const sImgPath = '/uploaded/';
+  const mImgPath = '/thumbs/';
 
   galleryMain.hide();
   $('#confirm').hide();
