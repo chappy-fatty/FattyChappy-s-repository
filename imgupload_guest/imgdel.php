@@ -1,15 +1,15 @@
 <?php
     header('Content-Type: text/html; charset=UTF-8');
   try {
-    require_once(__DIR__ . '/DBinfo.php');
+    require_once('/var/www/html/server/DBinfo.php');
 
     //set image file paths
     $path = [
-      '/var/www/html/imgupload_guest/uploaded/',
-      '/var/www/html/imgupload_guest/thumbs/',
+      '/var/www/html/uploaded/',
+      '/var/www/html/thumbs/',
     ];
 
-    $key = (int)filter_input(INPUT_GET, 'key');
+    $key = (int)filter_input(INPUT_GET, 'key', FILTER_SANITIZE_NUMBER_INT);
     $idxmax = 0;
     $filetodelete = '';
 
@@ -78,11 +78,11 @@
   catch(Exception $e){
     if(isset($pdo) === true && $pdo ->inTransaction() === true){
       $pdo -> rollBack();
-      echo "Database roll backed.<br>";
+      echo "Database roll backed due to error(s).<br>";
     }
-    header('Content-Type: text/html; charset=UTF-8', true, 500);
+    header('Content-Type: text/html; charset=UTF-8');
     $message = $e -> getMessage();
     echo "$message<br>";
-    echo "<a href='javascript:history.back()'>Back</a>";
+    echo "<a href='imgmanager.php'>Back</a>";
     exit;
   }
