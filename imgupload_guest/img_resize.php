@@ -1,19 +1,21 @@
 <?php
   ini_set('memory_limit', '256M');
-  header('Content-Type: text/plain; charset=UTF-8');
+  header('Content-Type: text/html; charset=UTF-8');
 
   function ImageResize($file){
     try {
       $filename = basename($file);
       $filepath = [
-        'thumbfile' => '/var/www/html/imgupload_guest/thumbs/' . $filename,
-        'midfile' => '/var/www/html/imgupload_guest/uploaded/' . $filename
+        'sfile' => '/var/www/html/smallimages/' . $filename,
+        'mfile' => '/var/www/html/images/' . $filename,
+        'lfile' => '/var/www/html/largeimages/' . $filename,
+        'xlfile' => '/var/www/html/xlargeimages/' . $filename
       ];
-      $quality = 85;
+
       $pictureFile = [
-        'jpg' => 'image/jpeg',
-        'png' => 'image/png',
-        'gif' => 'image/gif'
+          'jpg' => 'image/jpeg',
+          'png' => 'image/png',
+          'gif' => 'image/gif'
       ];
 
       $simg = new \Imagick(realpath($file));
@@ -33,19 +35,39 @@
           throw new Exception('Invalid file format.');
           break;
       }
+      $width = $simg -> getImageWidth();
+      $height = $simg -> getImageHeight();
+      $quality = $simg -> getImageCompressionQuality();
+      if($quarity > 85){
+        $quality = 85;
+      }
       $simg -> setImageFormat($format);
       $simg -> setImageCompressionQuality($quality);
-      $midimg = clone $simg;
+      $mimg = clone $simg;
+      $limg = clone $simg;
+      $xlimg = clone $simg;
 
       $simg -> resizeImage(300, 300, Imagick::FILTER_LANCZOS, 1, true);
-      $simg -> writeimage($filepath['thumbfile']);
+      $simg -> writeimage($filepath['sfile']);
       $simg -> clear();
 
-      if($midimg -> getImageWidth() > 768 || $midimg -> getImageHeight() > 768){
-        $midimg -> resizeImage(768, 768, Imagick::FILTER_LANCZOS, 1, true);
+      if($width > 768 || $height > 768){
+        $mimg -> resizeImage(768, 768, Imagick::FILTER_LANCZOS, 1, true);
       }
-      $midimg -> writeimage($filepath['midfile']);
-      $midimg -> clear();
+      $mimg -> writeimage($filepath['mfile']);
+      $mimg -> clear();
+
+      if($width > 1024 || $height > 1024){
+        $limg -> resizeImage(1024, 1024, Imagick::FILTER_LANCZOS, 1, true);
+      }
+      $limg -> writeimage($filepath['lfile']);
+      $limg -> clear();
+
+      if($width > 1400 || $height > 1400){
+        $xlimg -> resizeImage(1400, 1400, Imagick::FILTER_LANCZOS, 1, true);
+      }
+      $xlimg -> writeimage($filepath['xlfile']);
+      $xlimg -> clear();
 
       foreach ($filepath as $key => $value){
         $finfo = new finfo(FILEINFO_MIME_TYPE);
@@ -59,6 +81,6 @@
     }
 
     catch(ImagickException $e) {
-      throw new Exception($e->getMessage() . 'File: ' . basename(__FILE__) . ' Line: ' . __LINE__);
+      throw new Exception($e -> getMessage() . 'File: ' . basename(__FILE__) . ' Line: ' . __LINE__);
     }
   }
