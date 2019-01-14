@@ -19,10 +19,10 @@
     }
 
     catch(PDOException $e){
-      header('Content-Type: text/html; charset=UTF-8', true, 500);
+      header('Content-Type: text/html; charset=UTF-8');
       $message = $e -> getMessage();
       echo "$message<br>";
-      echo "<a href='javascript:history.back()'>Back</a>";
+      echo "<a href='imgmanager.php'>Back</a>";
       exit;
     }
   }
