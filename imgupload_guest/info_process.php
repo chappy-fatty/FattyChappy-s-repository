@@ -13,8 +13,8 @@
   $message = '';
 
   $path = [
-    '/var/www/html/imgupload_guest/thumbs/',
-    '/var/www/html/imgupload_guest/uploaded/'
+    '/var/www/html/thumbs/',
+    '/var/www/html/uploaded/'
   ];
 
   $file = (empty($_FILES['upFile']['name'])) ? basename($orgFile) : basename($_FILES['upFile']['name']);
@@ -91,10 +91,10 @@
     }
 
     catch(RuntimeException $e){
-      header('Content-Type: text/html; charset=UTF-8', true, 500);
+      header('Content-Type: text/html; charset=UTF-8');
       $message = $e -> getMessage();
       echo "$message<br>";
-      echo "<a href='javascript:history.back()'>Back</a>";
+      echo "<a href='imginfo.php?key={$index}'>Back</a>";
       exit;
     }
   }
