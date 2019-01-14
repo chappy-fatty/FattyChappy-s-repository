@@ -13,7 +13,7 @@
   $tmp = empty($_FILES['upFile']['tmp_name']) ? '' : $_FILES['upFile']['tmp_name'];
 
   try{
-    $folderPath = '/var/www/html/imgupload_guest/uploaded/';
+    $folderPath = '/var/www/html/uploaded/';
 
     // define image file types
     $pictureFile = array(
@@ -78,10 +78,10 @@
   }
 
   catch(RuntimeException $e){
-    header('Content-Type: text/html; charset=UTF-8', true, 500);
+    header('Content-Type: text/html; charset=UTF-8');
     $message = $e -> getMessage();
     echo "$message<br>";
-    echo "<a href='javascript:history.back()'>Back</a>";
+    echo "<a href='img_upload.html'>Back</a>";
     exit;
   }
 
